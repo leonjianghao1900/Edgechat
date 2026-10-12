@@ -1,20 +1,5 @@
 name: Deploy Worker
 on:
-  push:
-    branches:
-      - master
-      - main
-    paths:
-      - "worker/**"
-      - "frontend/**"
-      - "shared/**"
-      - "test/**"
-      - ".github/scripts/**"
-      - ".github/workflows/deploy-worker.yml"
-      - "package.json"
-      - "package-lock.json"
-      - "biome.json"
-      - "wrangler.example.toml"
   workflow_dispatch:
     inputs:
       apply_encryption_keyring:
