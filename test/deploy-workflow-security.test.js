@@ -27,10 +27,10 @@ test("Cloudflare 生产凭据只注入实际调用 Cloudflare 的步骤", () => 
 
 	for (const name of [
 		"Checkout",
-			"Setup Node.js",
-			"Install dependencies",
-			"Run tests",
-			"Build frontend assets",
+		"Setup Node.js",
+		"Install dependencies",
+		"Run tests",
+		"Build frontend assets",
 		"Generate wrangler config for CI",
 		"Generate admin bootstrap SQL (optional)",
 	]) {
@@ -40,11 +40,11 @@ test("Cloudflare 生产凭据只注入实际调用 Cloudflare 的步骤", () => 
 	for (const name of [
 		"Ensure Cloudflare resources",
 		"Initialize D1 schema (first creation only)",
-			"Prepare D1 migrations",
-			"Apply D1 migrations",
-			"Ensure admin user (optional)",
-			"Prepare Worker encryption secret",
-			"Deploy worker",
+		"Prepare D1 migrations",
+		"Apply D1 migrations",
+		"Ensure admin user (optional)",
+		"Prepare Worker encryption secret",
+		"Deploy worker",
 	]) {
 		const step = getStep(name);
 		assert.match(step, /CLOUDFLARE_API_TOKEN: \$\{\{ secrets\.CLOUDFLARE_API_TOKEN \}\}/);
@@ -94,7 +94,7 @@ test("资源确认脚本仅复用配置的 KV 标题，避免隐式共享会话�
 	const resourceStep = getStep("Ensure Cloudflare resources");
 	assert.match(
 		resourceStep,
-		/EDGECHAT_KV_NAMESPACE_TITLE: \$\{\{ vars\.EDGECHAT_KV_NAMESPACE_TITLE \|\| 'cfchat-sessions' \}\}/,
+		/EDGECHAT_KV_NAMESPACE_TITLE: edgechat-standalone-sessions/,
 	);
 });
 
