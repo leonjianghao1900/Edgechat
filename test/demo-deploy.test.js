@@ -61,7 +61,7 @@ test('production Action cannot build or deploy demo assets', () => {
   assert.match(appSource, /globalThis\.__EDGECHAT_DEMO__/);
   assert.doesNotMatch(appSource, /import \{ isDemoMode \} from '\.\/runtime\.js'/);
   assert.doesNotMatch(productionVite, /demo-dist|src\/demo|vite\.demo/);
-  assert.match(productionWrangler, /name = "cfchat"/);
+  assert.match(productionWrangler, /name = "edgechat-standalone"/);
   assert.match(productionWrangler, /directory = "\.\/frontend\/dist"/);
   assert.doesNotMatch(productionWrangler, /demo-dist|edgechat-demo/);
 });
