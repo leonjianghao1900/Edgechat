@@ -91,7 +91,7 @@ jobs:
                 'Content-Type': 'application/json',
               },
               body: JSON.stringify({
-                sql: "SELECT name FROM sqlite_master WHERE type = 'table' AND name NOT LIKE 'sqlite_%' AND name NOT IN ('d1_migrations', '_cf_METADATA')",
+                sql: "SELECT name FROM sqlite_master WHERE type = 'table' AND name NOT LIKE 'sqlite_%' AND name NOT IN ('d1_migrations', '_cf_METADATA', '_cf_KV')",
               }),
             },
           );
