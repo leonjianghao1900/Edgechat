@@ -7,7 +7,7 @@ const workflow = readFileSync(
   "utf8",
 ).replaceAll("\r\n", "\n");
 
-test("empty standalone D1 is initialized before applying incremental migrations", () => {
+test("D1 without the application channels table receives the base schema before migrations", () => {
   const checkStart = workflow.indexOf("      - name: Check D1 schema initialization\n");
   const initStart = workflow.indexOf("      - name: Initialize D1 schema when empty\n");
   const migrationsStart = workflow.indexOf("      - name: Prepare D1 migrations\n");
@@ -20,8 +20,8 @@ test("empty standalone D1 is initialized before applying incremental migrations"
   assert.match(checkStep, /sqlite_master/);
   assert.match(checkStep, /channels/);
   assert.match(checkStep, /GITHUB_OUTPUT/);
-  assert.match(checkStep, /non-empty D1 database is missing its channels table/);
 
   const initStep = workflow.slice(initStart, migrationsStart);
   assert.match(initStep, /steps\.ensure_resources\.outputs\.d1_created == 'true' \|\| steps\.check_d1\.outputs\.d1_initialized == 'false'/);
+  assert.match(initStep, /worker\/schema\.sql/);
 });
