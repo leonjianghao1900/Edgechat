@@ -39,7 +39,8 @@ test("Cloudflare 生产凭据只注入实际调用 Cloudflare 的步骤", () => 
 
 	for (const name of [
 		"Ensure Cloudflare resources",
-		"Initialize D1 schema (first creation only)",
+		"Check D1 schema initialization",
+		"Initialize D1 schema when empty",
 		"Prepare D1 migrations",
 		"Apply D1 migrations",
 		"Ensure admin user (optional)",
