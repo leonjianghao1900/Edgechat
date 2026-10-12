@@ -2,8 +2,7 @@ name: Deploy Worker
 on:
   push:
     branches:
-      - master
-      - main
+      - release/cloudflare
     paths:
       - "worker/**"
       - "frontend/**"
